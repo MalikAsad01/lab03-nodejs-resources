@@ -1,4 +1,4 @@
-const database = require('./dbQuery');
+const database = require('../db/dbQuery');
 const bcrypt = require("bcryptjs");
 
 //select all clients
@@ -11,6 +11,17 @@ function find(callback) {
 
 function findByUsername(username, callback) {
     const selectClient = (`SELECT * from account where username like '${username}';`);
+    database.getResult(selectClient, function(err, rows) {
+        if (!err) {
+            callback(null, rows);
+        } else {
+            console.log(err);
+        }
+    });
+}
+
+function findByNumclient(clientNumber, callback) {
+    const selectClient = (`SELECT * from account where num_client like '${clientNumber}';`);
     database.getResult(selectClient, function(err, rows) {
         if (!err) {
             callback(null, rows);
@@ -70,12 +81,22 @@ function createClient(client, callback) {
         }
     });
 }
+
+function findClientByNumber(clientNumber, callback) {
+    const selectClient = (`SELECT * from client where num_client like '${clientNumber}';`);
+    database.getResult(selectClient, function(err, rows) {
+        if (!err) {
+            callback(null, rows);
+        } else {
+            console.log(err);
+        }
+    });
+}
+
 module.exports = {
     find,
     findByUsername,
-    findBySociety,
-    findByNumclient,
     createClient,
-    deleteClient,
-    createInitialAccounts
+    findByNumclient,
+    findClientByNumber,
 };
