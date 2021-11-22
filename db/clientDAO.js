@@ -98,5 +98,5 @@ module.exports = {
     findByUsername,
     createClient,
     findByNumclient,
-    findClientByNumber,
+    findClientByNumber
 };

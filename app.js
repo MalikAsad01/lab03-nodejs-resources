@@ -2,19 +2,12 @@ const express = require('express');
 //creating app
 const app = express();
 
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-// const session = require('express-session');
-// app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }))
-
-
 
 
 //send the index.html when receiving HTTP GET /
 //handling static HTML and EJS templates
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
-
 app.get('/', (req, res) => {
  res.render('index'); //no need for ejs extension
 });
