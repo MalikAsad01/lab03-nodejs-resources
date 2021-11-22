@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 
 
-
 //send the index.html when receiving HTTP GET /
 //handling static HTML and EJS templates
 app.use(express.static('public'));
@@ -20,9 +19,11 @@ app.get('/contacts', (req, res) => {
 app.get('/catalogue', (req, res) => {
     res.render('catalogue'); 
    });
-app.get("/register", (req, res) => {
+
+   app.get("/register", (req, res) => {
     res.render('register');
 });   
+
 app.get("/login", (req, res) => {
     res.render('login');
 }); 

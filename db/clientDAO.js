@@ -70,7 +70,7 @@ function createAccount(num_client, username, password, callback) {
 
 function createClient(client, callback) {
     //insert client
-    const insertClient = (`INSERT INTO client(society, contact, addres, zipcode, city, phone, fax, max_outstanding) VALUES('${client.society}', '${client.contact}', '${client.addres}', '${client.zipcode}', '${client.city}', '${client.phone}', '${client.fax}', ${client.max_outstanding});`);
+    const insertClient = (`INSERT INTO client(contact, address, city, phone) VALUES( '${client.contact}', '${client.address}', '${client.city}', '${client.phone}');`);
     database.getResult(insertClient, function(err1, result1) {
         if (!err1) {
             //if no error insert their account

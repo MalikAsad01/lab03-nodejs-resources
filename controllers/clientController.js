@@ -77,13 +77,15 @@ const getClients = (request, response) => {
 
 const getClient = (request, response) => {
     const clientServices = require('../services/clientServices');
+    
     let username = request.params.username;
     let num_client;
 
     clientServices.searchUsernameService(username, function(err, rows) {
         num_client = rows[0].num_client
         clientServices.searchNumclientService(num_client, function(err, rows) {
-            console.log(rows)
+            console.log(rows[0])
+            
             response.render('clientDetails', {
                 username: username,
                 clientNumber: rows[0].num_client,
