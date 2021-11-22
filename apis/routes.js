@@ -24,7 +24,7 @@ router.get('/api/catalog', productController.getCatalogue);
 //router.get('/api/article/:id', productController.getProductByID);
 router.get('/api/article/:id', productController.getProductByID);
 
-router.get('/api/login/:username', clientController.getClients);
+router.get('/api/login/:username', clientController.getClient);
 
 
 //routes for dynamic processing of clients 
