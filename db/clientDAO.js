@@ -1,4 +1,4 @@
-const database = require('../db/dbQuery');
+const database = require('./dbQuery');
 const bcrypt = require("bcryptjs");
 
 //select all clients
@@ -70,7 +70,15 @@ function createAccount(num_client, username, password, callback) {
 
 function createClient(client, callback) {
     //insert client
-    const insertClient = (`INSERT INTO client(contact, address, city, phone) VALUES( '${client.contact}', '${client.address}', '${client.city}', '${client.phone}');`);
+    const insertClient = (`INSERT INTO client(society, contact, address, zipcode, city, phone, fax, max_outstanding) VALUES('${client.society}', '${client.contact}', '${client.address}', '${client.zipcode}', '${client.city}', '${client.phone}', '${client.fax}', '${client.max_outstanding}');`);
+    console.log(""+client.society)
+    console.log(""+client.contact)
+    console.log(""+client.address)
+    console.log(""+client.zipcode)
+    console.log(""+client.city)
+    console.log(""+client.phone)
+    console.log(""+client.fax)
+    console.log(""+client.max_outstanding)
     database.getResult(insertClient, function(err1, result1) {
         if (!err1) {
             //if no error insert their account
@@ -98,5 +106,5 @@ module.exports = {
     findByUsername,
     createClient,
     findByNumclient,
-    findClientByNumber
+    findClientByNumber,
 };

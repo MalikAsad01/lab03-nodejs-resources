@@ -1,17 +1,8 @@
+const { Client } = require("../models/entities");
+
 const clientDAO = require('../db/clientDAO');
 const bcrypt = require("bcryptjs");
 
-class Client {
-    constructor(username, password, num,  contact, address,  city, phone) {
-        this.username = username;
-        this.password = password;
-        this.num = num;
-        this.contact = contact;
-        this.address = address;
-        this.city = city;
-        this.phone = phone;
-    }
-}
 
 const loginService = (typedUsername, typedPassword, callback) => {
     //check if the user is in the DB
@@ -42,7 +33,7 @@ const loginService = (typedUsername, typedPassword, callback) => {
                             throw err3;
                         }
                         if (rows.length === 1) {
-                            let client = new Client(rows[0].num_client, rows[0].contact, rows[0].addres, rows[0].city, rows[0].phone);
+                            let client = new Client(rows[0].num_client, rows[0].society, rows[0].contact, rows[0].address, rows[0].zipcode, rows[0].city, rows[0].phone, rows[0].fax, rows[0].max_outstanding);
                             callback(null, true, rows);
                         } else {
                             throw err3;
@@ -58,6 +49,7 @@ const registerService = (client, callback) => {
 
     //check if the user is in the DB
     clientDAO.findByUsername(client.username, function(err, rows) {
+        console.log("******************************client username"+client.username)
         if (err) {
             throw err;
         }
@@ -114,8 +106,8 @@ const deleteService = function(num_client, callback) {
 module.exports = {
     loginService,
     registerService,
-    searchNumclientService,
-    searchService,
-    deleteService,
-    searchUsernameService,
+    //searchNumclientService,
+    //searchService,
+    //deleteService,
+    //searchUsernameService,
 };

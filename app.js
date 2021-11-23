@@ -1,13 +1,19 @@
 const express = require('express');
+const session = require('express-session');
+
 //creating app
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const session = require('express-session');
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }))
 
+app.use(session({ secret: 'keyboard cat',resave:false, cookie: { maxAge: 1000 * 60 * 60 * 24 },saveUninitialized:true, }))
+// app.use(session({
+//     secret: 'test',
+//     resave: true,
+//     saveUninitialized: true
+// }));
 
 //send the index.html when receiving HTTP GET /
 //handling static HTML and EJS templates
