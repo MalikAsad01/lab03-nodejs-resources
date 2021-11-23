@@ -38,18 +38,18 @@ const registerControl = (request, response) => {
     let password = request.body.password;
     let society = request.body.society;
     let contact = request.body.contact;
-    let address = request.body.address;
+    let addres = request.body.addres;
     let zipcode = request.body.zipcode;
     let city = request.body.city;
     let phone = request.body.phone;
     let fax = request.body.fax;
     let max_outstanding = request.body.max_outstanding;
-    let client = new Client(username, password, 0, society, contact, address, zipcode, city, phone, fax, max_outstanding);
+    let client = new Client(username, password, 0, society, contact, addres, zipcode, city, phone, fax, max_outstanding);
     console.log("username:" +username);
     console.log("password:" +password);
     console.log("society:" +society);
     console.log("contact:" +contact);
-    console.log("address:" +address);
+    console.log("address:" +addres);
     console.log("zipcode:" +zipcode);
     console.log("city:" +city);
     console.log("phone:" +phone);
@@ -93,7 +93,7 @@ const getClient = (request, response) => {
                 clientNumber: rows[0].num_client,
                 society: rows[0].society,
                 contact: rows[0].contact,
-                address: rows[0].address,
+                addres: rows[0].addres,
                 zipcode: rows[0].zipcode,
                 city: rows[0].city,
                 phone: rows[0].phone,

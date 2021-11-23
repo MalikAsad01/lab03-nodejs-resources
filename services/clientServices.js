@@ -33,7 +33,7 @@ const loginService = (typedUsername, typedPassword, callback) => {
                             throw err3;
                         }
                         if (rows.length === 1) {
-                            let client = new Client(rows[0].num_client, rows[0].society, rows[0].contact, rows[0].address, rows[0].zipcode, rows[0].city, rows[0].phone, rows[0].fax, rows[0].max_outstanding);
+                            let client = new Client(rows[0].num_client, rows[0].society, rows[0].contact, rows[0].addres, rows[0].zipcode, rows[0].city, rows[0].phone, rows[0].fax, rows[0].max_outstanding);
                             callback(null, true, rows);
                         } else {
                             throw err3;
@@ -106,8 +106,8 @@ const deleteService = function(num_client, callback) {
 module.exports = {
     loginService,
     registerService,
-    //searchNumclientService,
-    //searchService,
-    //deleteService,
-    //searchUsernameService,
+    searchNumclientService,
+    searchService,
+    deleteService,
+    searchUsernameService,
 };
